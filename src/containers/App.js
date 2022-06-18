@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Cardlist from '../components/Cardlist';
 import Searchbox from '../components/Searchbox';
 import Scroll from '../components/Scroll';
+import Errorboundary from '../components/Errorboundary';
 // import {robots} from './robots'; put users on server instead
 import './App.css'
 
@@ -41,7 +42,9 @@ class App extends Component {
 				<h1 className='f1'>RoboFriends</h1>
 				<Searchbox searchChange={this.onSearchChange}/> {/*search function*/}
 				<Scroll> {/*putting scroll to robots card field*/}
-					<Cardlist robots={filteredRobots} /> {/*robots card field display*/}
+					<Errorboundary> {/*display error page if has error*/}
+						<Cardlist robots={filteredRobots} /> {/*robots card field display*/}
+					</Errorboundary>
 				</Scroll>
 			</div>
 			);
